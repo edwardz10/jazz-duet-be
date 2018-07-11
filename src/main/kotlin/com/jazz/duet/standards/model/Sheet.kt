@@ -4,10 +4,20 @@ import javax.persistence.*
 
 @Entity
 @Table(name="sheet")
-data class Sheet(@Id @GeneratedValue(strategy = GenerationType.AUTO)
-                 @Column(name="sheet_id")
-                 val sheet_id: Long,
-                 @Column(name="chords")
-                 val chords: String,
-                 @Column(name="melody_key")
-                 val key: String)
+class Sheet {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="sheet_id")
+    var sheet_id: Long? = null
+
+    @Column(name="chords")
+    var chords: String? = null
+    @Column(name="melody_key")
+    var key: String? = null
+
+    constructor() {}
+
+    constructor(chords: String, key: String) {
+        this.chords = chords;
+        this.key = key;
+    }
+}
