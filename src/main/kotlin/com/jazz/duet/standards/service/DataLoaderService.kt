@@ -92,6 +92,14 @@ class DataLoaderService(val standardsRepository: StandardsRepository, val sheets
                 "https://www.youtube.com/watch?v=UtdzMfSwXi8",
                 "C. Parker")
 
+        saveSheetAndStandard("G |G |Gm7 |C7 |F |F |Fm7 |Bb7 " +
+                "|Eb7 |Am7b5 D7 |Gm7 |D7+9 |Bm7 |E7 |Am7 |D7" +
+                "|G |G |Gm7 |C7 |F |F |Fm7 |Bb7 " +
+                "|Eb7 |Am7b5 D7 |G |G |Bm7 E7|Am7 D7|G E7 |Am7 D7|",
+                "G",
+                "Ornithology",
+                "https://www.youtube.com/watch?v=QfuCZQagz2A",
+                "C. Parker")
     }
 
     fun saveSheetAndStandard(chords: String, key: String, name: String, video: String, author:
