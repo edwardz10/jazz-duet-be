@@ -17,7 +17,12 @@ import org.springframework.web.filter.CorsFilter
 class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     private val AUTH_WHITELIST = arrayOf(
-            "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**", "/api/**")
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/swagger.json",
+            "/v2/api-docs",
+            "/webjars/**",
+            "/api/**")
 
     @Bean
     fun corsFilter(): FilterRegistrationBean<*> {
@@ -36,7 +41,11 @@ class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
-            .antMatchers(*AUTH_WHITELIST).permitAll()
-            .antMatchers("/**/*").denyAll()
+            .antMatchers(*AUTH_WHITELIST).permitAll().and()
+            .authorizeRequests()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .csrf().disable();
     }
 }

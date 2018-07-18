@@ -15,7 +15,7 @@ class Standard {
 
     @OneToOne
     @JoinColumn(name = "sheet_id")
-    var sheet: Sheet? = null
+    var sheet: Sheet = Sheet()
 
     @Column(name="video")
     var video: String? = null
