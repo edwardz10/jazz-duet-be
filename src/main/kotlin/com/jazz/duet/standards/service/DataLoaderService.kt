@@ -2,13 +2,11 @@ package com.jazz.duet.standards.service
 
 import com.jazz.duet.standards.model.Sheet
 import com.jazz.duet.standards.model.Standard
-import com.jazz.duet.standards.repository.SheetsRepository
-import com.jazz.duet.standards.repository.StandardsRepository
 import org.springframework.stereotype.Service
 import javax.annotation.PostConstruct
 
 @Service
-class DataLoaderService(val standardsRepository: StandardsRepository, val sheetsRepository: SheetsRepository) {
+class DataLoaderService(val standardsService: StandardsService) {
 
     @PostConstruct
     fun init() {
@@ -124,9 +122,8 @@ class DataLoaderService(val standardsRepository: StandardsRepository, val sheets
     fun saveSheetAndStandard(chords: String, key: String, name: String, video: String, author:
         String) {
         var sheet = Sheet(chords, key)
-        sheet = sheetsRepository.save(sheet)
-
         var standard = Standard(name, sheet, video, author)
-        standardsRepository.save(standard)
+
+        standardsService.createStandard(standard)
     }
 }

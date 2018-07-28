@@ -23,6 +23,11 @@ class StandardsService(val standardsRepository: StandardsRepository,
             standard.standard_id = null
         }
 
+        if (standard.sheet.sheet_id != null) {
+            standard.sheet.sheet_id = null;
+        }
+
+        standard.sheet = sheetsRepository.save(standard.sheet)
         return standardsRepository.save(standard)
     }
 
