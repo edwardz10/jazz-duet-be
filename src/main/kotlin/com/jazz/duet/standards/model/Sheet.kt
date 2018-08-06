@@ -10,13 +10,14 @@ class Sheet {
     var sheet_id: Long? = null
 
     @Column(name="chords")
-    var chords: String? = null
+    var chords: Array<String> = emptyArray()
+
     @Column(name="melody_key")
     var key: String? = null
 
     constructor() {}
 
-    constructor(chords: String, key: String) {
+    constructor(chords: Array<String>, key: String) {
         this.chords = chords;
         this.key = key;
     }
